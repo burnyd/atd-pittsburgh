@@ -10,10 +10,5 @@
   tasks:
   - name: Configure our syslog servers
     eos_config:
-      src: templste/syslog.j2
-      provider: "{{ eos_connection }}"
-
-  - name: send some commands related to syslog
-    eos_command:
-      commands: show logging
+      src: templates/syslog.j2
       provider: "{{ eos_connection }}"
