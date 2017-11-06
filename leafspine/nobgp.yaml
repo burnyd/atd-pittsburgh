@@ -1,0 +1,17 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+  - "group_vars/all.yaml"
+
+  tasks:
+
+  - name: nobgp
+    register: showcommands
+    eos_command:
+      commands:
+        - no router bgp
+      provider: "{{ eos_connection }}"
+
+  - debug: var=showcommands.stdout
