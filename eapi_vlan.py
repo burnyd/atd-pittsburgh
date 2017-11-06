@@ -1,9 +1,9 @@
 import json
 from jsonrpclib import Server
 
-switches = ["172.22.28.156", "172.22.28.157", "172.22.28.158"]
-username = "admin"
-password = "admin"
+switches = ["192.168.0.14", "192.168.0.15", "192.168.0.16","192.168.0.17"]
+username = "arista"
+password = "arista"
 
 # Going through all the switch IP addresses listed above
 for switch in switches:
@@ -26,14 +26,5 @@ for switch in switches:
     print
 
 print "\n*** Done adding vlan to switches ***\n"
-
-# Go through them again to remove the vlan
-for switch in switches:
-    urlString = "https://{}:{}@{}/command-api".format(username, password, switch)
-    switchReq = Server( urlString )
-    # Remove vlan 100
-    print switch + " : removing vlan 100"
-    response = switchReq.runCmds( 1, ["enable", "configure", "no vlan 100", "end"] )
-    print response
 
 print "\n*** Script done ***"
