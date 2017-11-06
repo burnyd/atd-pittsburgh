@@ -3,8 +3,9 @@ eos_connection:
   username: arista
   password: arista
   transport: eapi
-  use_ssl: false
-
+  use_ssl: true
+  validate_certs: no
+  
 
 spine_as: 65101
 
@@ -65,3 +66,15 @@ spine_peers:
       - remote-as 65103
     172.16.200.30:
       - remote-as 65104
+
+vlans:
+    - vlanid: 7
+      name: production
+    - vlanid: 8
+      name: app
+
+syslogs:
+    - host: 1.1.1.1
+    - host: 2.2.2.2
+    - host: 3.3.3.3
+    - host: 4.4.4.4 

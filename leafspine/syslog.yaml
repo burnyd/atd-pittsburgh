@@ -1,0 +1,19 @@
+---
+
+- hosts: leafs
+  connection: local
+  gather_facts: yes
+
+  vars_files:
+  - "group_vars/all.yaml"
+
+  tasks:
+  - name: Configure our syslog servers
+    eos_config:
+      src: templste/syslog.j2
+      provider: "{{ eos_connection }}"
+
+  - name: send some commands related to syslog
+    eos_command:
+      commands: show logging
+      provider: "{{ eos_connection }}"
